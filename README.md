@@ -28,6 +28,8 @@ build --define=MINGW_PATH="path/to/mingw"                       # define path to
 build --define=GCC_VERSION="gcc version"                        # define gcc version used, for example: build --define=GCC_VERSION="13.2.0"
 ```
 ---
+Toolchain allows usage of `--compilation_mode dbg|opt` build option. 
+
 Default flags defined in `config/config.bzl`:
 - for all actions: `-Wextra -Wall`
 - for `--compilation_mode dbg`: `-g -Og` + linker flags `-W1l,--gc-sections`
