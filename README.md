@@ -9,7 +9,7 @@ bazel_dep(
 git_override(
     module_name = "env",
     remote = "https://github.com/vvviktor/bazel-mingw-toolchain.git",
-    commit = "39dd4d91357e6461e062cc72ec1518d8e35bc67c",
+    commit = "522e8c257bb5559e55ef34d2a6b5686554f6e398",
 )
 
 register_execution_platforms(
