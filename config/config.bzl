@@ -1,5 +1,3 @@
-MINGW_PATH="C:/msys64/ucrt64"
-GCC_VERSION="13.2.0"
 COMPILE_FLAGS=[
     "-Wextra",
     "-Wall",

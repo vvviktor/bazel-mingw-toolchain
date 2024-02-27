@@ -59,10 +59,34 @@ lto_index_actions = [
 ]
 
 def _impl(ctx):
+    MINGW_PATH = ctx.var.get("MINGW_PATH")
+    GCC_VERSION = ctx.var.get("GCC_VERSION")
+    
+    tool_paths_dict = {
+        "ar" : MINGW_PATH + "/bin/ar",
+        "cpp" : MINGW_PATH + "/bin/cpp",
+        "gcc" : MINGW_PATH + "/bin/g++",
+        "gcov" : MINGW_PATH + "/bin/gcov",
+        "ld" : MINGW_PATH + "/bin/ld",
+        "nm" : MINGW_PATH + "/bin/nm",
+        "objdump" : MINGW_PATH + "/bin/objdump",
+        "strip" : MINGW_PATH + "/bin/strip",
+    }
+
     tool_paths = [
         tool_path(name = name, path = path)
-        for name, path in ctx.attr.tool_paths.items()
+        for name, path in tool_paths_dict.items()
     ]
+
+    cxx_builtin_include_directories = [
+        MINGW_PATH + "/include",
+        MINGW_PATH + "/lib/gcc/x86_64-w64-mingw32/" + GCC_VERSION + "/include-fixed",
+        MINGW_PATH + "/lib/gcc/x86_64-w64-mingw32/" + GCC_VERSION + "/include",
+        MINGW_PATH + "/lib/gcc/x86_64-w64-mingw32/" + GCC_VERSION + "/install-tools/include",
+        MINGW_PATH + "/x86_64-w64-mingw32/include",
+    ]
+
+    abi_version = "gcc-" + GCC_VERSION
 
     action_configs = []
 
@@ -159,14 +183,14 @@ def _impl(ctx):
         ctx = ctx,
         features = features,
         action_configs = action_configs,
-        cxx_builtin_include_directories = ctx.attr.cxx_builtin_include_directories,
+        cxx_builtin_include_directories = cxx_builtin_include_directories,
         toolchain_identifier = ctx.attr.toolchain_identifier,
         host_system_name = ctx.attr.host_system_name,
         target_system_name = ctx.attr.target_system_name,
         target_cpu = ctx.attr.cpu,
         target_libc = ctx.attr.target_libc,
         compiler = ctx.attr.compiler,
-        abi_version = ctx.attr.abi_version,
+        abi_version = abi_version,
         abi_libc_version = ctx.attr.abi_libc_version,
         tool_paths = tool_paths,
         artifact_name_patterns = artifact_name_patterns,
@@ -176,13 +200,11 @@ mingw_cc_toolchain_config = rule(
     implementation = _impl,
     attrs = {
         "abi_libc_version": attr.string(mandatory = True),
-        "abi_version": attr.string(mandatory = True),
         "compile_flags": attr.string_list(),
         "compiler": attr.string(mandatory = True),
         "coverage_compile_flags": attr.string_list(),
         "coverage_link_flags": attr.string_list(),
         "cpu": attr.string(mandatory = True),
-        "cxx_builtin_include_directories": attr.string_list(),
         "cxx_flags": attr.string_list(),
         "dbg_compile_flags": attr.string_list(),
         "host_system_name": attr.string(mandatory = True),
@@ -193,7 +215,6 @@ mingw_cc_toolchain_config = rule(
         "supports_start_end_lib": attr.bool(),
         "target_libc": attr.string(mandatory = True),
         "target_system_name": attr.string(mandatory = True),
-        "tool_paths": attr.string_dict(),
         "toolchain_identifier": attr.string(mandatory = True),
         "unfiltered_compile_flags": attr.string_list(),
     },
