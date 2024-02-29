@@ -32,5 +32,5 @@ Toolchain allows usage of `--compilation_mode dbg|opt` build option.
 
 Default flags defined in `config/config.bzl`:
 - for all actions: `-Wextra -Wall`
-- for `--compilation_mode dbg`: `-g -Og` + linker flags `-W1l,--gc-sections`
+- for `--compilation_mode dbg`: `-g -Og` + linker flags `-Wl,--gc-sections`
 - for `--compilation_mode opt`: `-g0 -O3 -DNDEBUG -ffunction-selections -fdata-selections`
