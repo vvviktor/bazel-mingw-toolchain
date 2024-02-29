@@ -29,7 +29,6 @@ build --define=MINGW_PATH="path/to/mingw"                       # define path to
 build --define=GCC_VERSION="gcc version"                        # define gcc version used, for example: build --define=GCC_VERSION="13.2.0"
 ```
 
-
 - If You wish to disable `bzlmod`, add following to your WORKSPACE:
 
 ```
