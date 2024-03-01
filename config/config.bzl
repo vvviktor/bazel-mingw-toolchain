@@ -16,7 +16,7 @@ OPT_COMPILE_FLAGS=[
     "-fdata-sections",
 ]
 
-OPT_LINK_FLAGS=[
+LINK_FLAGS=[
     "-lkernel32",
     "-luser32",
     "-lgdi32",
@@ -27,5 +27,8 @@ OPT_LINK_FLAGS=[
     "-luuid",
     "-lcomdlg32",
     "-ladvapi32",
+]
+
+OPT_LINK_FLAGS=[
     "-Wl,--gc-sections",
 ]

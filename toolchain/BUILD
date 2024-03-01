@@ -21,6 +21,7 @@ load(
     "COMPILE_FLAGS",
     "DEBUG_COMPILE_FLAGS",
     "OPT_COMPILE_FLAGS",
+    "LINK_FLAGS",
     "OPT_LINK_FLAGS",
 )
 
@@ -36,6 +37,7 @@ mingw_cc_toolchain_config(
     compile_flags = COMPILE_FLAGS,
     dbg_compile_flags = DEBUG_COMPILE_FLAGS,
     opt_compile_flags = OPT_COMPILE_FLAGS,
+    link_flags = LINK_FLAGS,
     opt_link_flags = OPT_LINK_FLAGS,
 )
 
