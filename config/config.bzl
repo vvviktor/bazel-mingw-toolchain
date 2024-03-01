@@ -17,5 +17,15 @@ OPT_COMPILE_FLAGS=[
 ]
 
 OPT_LINK_FLAGS=[
+    "-lkernel32",
+    "-luser32",
+    "-lgdi32",
+    "-lwinspool",
+    "-lshell32",
+    "-lole32",
+    "-loleaut32",
+    "-luuid",
+    "-lcomdlg32",
+    "-ladvapi32",
     "-Wl,--gc-sections",
 ]
