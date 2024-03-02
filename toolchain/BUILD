@@ -32,7 +32,7 @@ mingw_cc_toolchain_config(
     target_system_name = "windows",
     cpu = "x86_64",
     target_libc = "nothing",
-    compiler = "gcc",
+    compiler = "mingw-gcc",
     abi_libc_version = "nothing",
     compile_flags = COMPILE_FLAGS,
     dbg_compile_flags = DEBUG_COMPILE_FLAGS,
