@@ -1,3 +1,11 @@
 module(name="env")
 
 bazel_dep(name="platforms", version="0.0.8")
+
+register_execution_platforms(
+    "//platform:windows_platform"
+)
+
+register_toolchains(
+    "//toolchain:mingw_cc_toolchain",
+)

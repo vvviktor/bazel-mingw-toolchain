@@ -13,14 +13,6 @@ git_override(
     remote = "https://github.com/vvviktor/bazel-mingw-toolchain.git",
     commit = "50333d6fae4f5331339533b06f65d4e5eb12f9d3",
 )
-
-register_execution_platforms(
-    "@env//platform:windows_platform"
-)
-
-register_toolchains(
-    "@env//toolchain:mingw_cc_toolchain",
-)
 ```
 Add following commands to your `.bazelrc` file:
 ```
