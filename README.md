@@ -11,7 +11,7 @@ bazel_dep(
 git_override(
     module_name = "mingw_toolchain",
     remote = "https://github.com/vvviktor/bazel-mingw-toolchain.git",
-    commit = "7c4edbfdbbcf8fb214c5365dde53357f8966fc11",
+    commit = "0ea42a31c45f0ff146058cecd124053b6915205e",
 )
 ```
 Add following commands to your `.bazelrc` file:
@@ -31,7 +31,7 @@ load("@bazel_tools//tools/build_defs/repo:git.bzl", "git_repository")
 git_repository(
     name = "mingw_toolchain",
     remote = "https://github.com/vvviktor/bazel-mingw-toolchain.git",
-    commit = "7c4edbfdbbcf8fb214c5365dde53357f8966fc11",
+    commit = "0ea42a31c45f0ff146058cecd124053b6915205e",
 )
 ```
 Add following commands to your `.bazelrc` file:
