@@ -3,7 +3,7 @@
 
 - If You desire to keep `bzlmod enabled`, add following strings to your `MODULE.bazel` file:
 
-```
+```starlark
 bazel_dep(
     name = "mingw_toolchain"
 )
@@ -15,7 +15,7 @@ git_override(
 )
 ```
 Add following commands to your `.bazelrc` file:
-```
+```starlark
 build --incompatible_enable_cc_toolchain_resolution             # allow bazel to use custom toolchains
 build --define=MINGW_PATH="path/to/mingw"                       # define path to yuor mingw location, for example: build --define=MINGW_PATH="C:/msys64/ucrt64" 
 build --define=GCC_VERSION="gcc version"                        # define gcc version used, for example: build --define=GCC_VERSION="13.2.0"
@@ -25,7 +25,7 @@ build --define=GCC_VERSION="gcc version"                        # define gcc ver
 ---
 - If You wish to disable `bzlmod`, add following to your WORKSPACE:
 
-```
+```starlark
 load("@bazel_tools//tools/build_defs/repo:git.bzl", "git_repository")
 
 git_repository(
@@ -35,7 +35,7 @@ git_repository(
 )
 ```
 Add following commands to your `.bazelrc` file:
-```
+```starlark
 build --incompatible_enable_cc_toolchain_resolution             # allow bazel to use custom toolchains
 build --extra_toolchains="@mingw_toolchain//toolchain:mingw_cc_toolchain" --extra_execution_platforms="@mingw_toolchain//platform:windows_platform"
 build --define=MINGW_PATH="path/to/mingw"                       # define path to yuor mingw location, for example: build --define=MINGW_PATH="C:/msys64/ucrt64" 
