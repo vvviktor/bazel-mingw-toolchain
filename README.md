@@ -5,11 +5,11 @@
 
 ```
 bazel_dep(
-    name = "env"
+    name = "mingw_toolchain"
 )
 
 git_override(
-    module_name = "env",
+    module_name = "mingw_toolchain",
     remote = "https://github.com/vvviktor/bazel-mingw-toolchain.git",
     commit = "7c4edbfdbbcf8fb214c5365dde53357f8966fc11",
 )
@@ -29,7 +29,7 @@ build --define=GCC_VERSION="gcc version"                        # define gcc ver
 load("@bazel_tools//tools/build_defs/repo:git.bzl", "git_repository")
 
 git_repository(
-    name = "env",
+    name = "mingw_toolchain",
     remote = "https://github.com/vvviktor/bazel-mingw-toolchain.git",
     commit = "7c4edbfdbbcf8fb214c5365dde53357f8966fc11",
 )
@@ -37,7 +37,7 @@ git_repository(
 Add following commands to your `.bazelrc` file:
 ```
 build --incompatible_enable_cc_toolchain_resolution             # allow bazel to use custom toolchains
-build --extra_toolchains="@env//toolchain:mingw_cc_toolchain" --extra_execution_platforms="@env//platform:windows_platform"
+build --extra_toolchains="@mingw_toolchain//toolchain:mingw_cc_toolchain" --extra_execution_platforms="@mingw_toolchain//platform:windows_platform"
 build --define=MINGW_PATH="path/to/mingw"                       # define path to yuor mingw location, for example: build --define=MINGW_PATH="C:/msys64/ucrt64" 
 build --define=GCC_VERSION="gcc version"                        # define gcc version used, for example: build --define=GCC_VERSION="13.2.0"
 common --noenable_bzlmod

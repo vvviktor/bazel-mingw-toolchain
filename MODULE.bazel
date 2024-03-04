@@ -1,4 +1,4 @@
-module(name="env")
+module(name="mingw_toolchain")
 
 bazel_dep(name="platforms", version="0.0.8")
 
